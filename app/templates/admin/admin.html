@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w3-row w3-margin-top">
+    <div class="w3-container w3-col l3 m2 w3-hide-small"></div>
+    <section class="w3-container w3-col l6 m8">
+        <div class="w3-card">
+            <header class="w3-container w3-teal"><h1>New User</h1></header>
+            <form class="w3-container " action="" method="post" novalidate>
+                {{ new_user_form.hidden_tag() }}
+                <p>
+                    {{ new_user_form.username.label }}<br>
+                    {{ new_user_form.username(size=25) }}<br>
+                    {% for error in new_user_form.username.errors %}
+                    <div class="w3-panel w3-display-container w3-red">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                        <p>{{ error }}</p>
+                    </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ new_user_form.password.label }}<br>
+                    {{ new_user_form.password(size=25) }}<br>
+                    {% for error in new_user_form.password.errors %}
+                    <div class="w3-panel w3-display-container w3-red">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                        <p>{{ error }}</p>
+                    </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ new_user_form.mail.label }}<br>
+                    {{ new_user_form.mail(size=25) }}<br>
+                    {% for error in new_user_form.mail.errors %}
+                    <div class="w3-panel w3-display-container w3-red">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                        <p>{{ error }}</p>
+                    </div>
+                    {% endfor %}
+                </p>
+                <p>{{ new_user_form.send_mail() }} {{ new_user_form.send_mail.label }}</p>
+                <p>{{ new_user_form.submit3() }}</p>
+            </form>
+            {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+
+            <div class = "w3-bar w3-pale-yellow">
+                <p>{{message}}</p>
+            </div>
+
+            {% endfor %}
+            {% endwith %}
+        </div>
+
+        <div class="w3-card">
+            <header class="w3-container w3-teal"><h1>Download</h1></header>
+            <form class="w3-container" action="" method="post" novalidate>
+                {{ download_data_form.hidden_tag() }}
+                <p>
+                    {{ download_data_form.format.label }}
+                    {{ download_data_form.format() }}
+                    {% for error in download_data_form.format.errors %}
+                    <div class="w3-panel w3-display-container w3-red">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                        <p>{{ error }}</p>
+                    </div>
+                    {% endfor %}
+
+
+                    {{ download_data_form.submit2() }}
+                </p>
+
+            </form>
+        </div>
+
+        <div class="w3-card">
+            <header class="w3-container w3-red"><h1>Regenerate Database</h1></header>
+            <form class="w3-container " action="" method="post" novalidate>
+                {{ images_form.hidden_tag() }}
+                <p>
+                    {{ images_form.dir.label }}
+                    {{ images_form.dir() }}
+                    {% for error in images_form.dir.errors %}
+                    <div class="w3-panel w3-display-container w3-red">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                        <p>{{ error }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {{ images_form.submit1() }}
+                </p>
+            </form>
+        </div>
+    </section>
+    <div class="w3-container w3-col l3 m2 w3-hide-small "></div>
+</div>
+{% endblock %}

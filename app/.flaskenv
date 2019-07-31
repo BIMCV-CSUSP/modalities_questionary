@@ -1,0 +1,4 @@
+
+FLASK_APP=web.py
+
+SECRET_KEY=sg5RT457ws5t4hsth5SHths5SHT5dfHshDHGFsadbxm5jcnxcq

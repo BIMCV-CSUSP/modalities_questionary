@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w3-row">
+    <div class="w3-container w3-col l4 m6 w3-hide-small"></div>
+    <section class="w3-card w3-col w3-card  l4 m6">
+        <header class="w3-container w3-teal"><h1>Sign In</h1></header>
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+
+        <div class = "w3-bar w3-deep-orange">
+            <p>{{message}}</p>
+        </div>
+
+        {% endfor %}
+        {% endwith %}
+        <form class="w3-container " action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=25) }}<br>
+                {% for error in form.username.errors %}
+                <div class="w3-panel w3-display-container w3-red">
+                    <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                    <p>{{ error }}</p>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=25) }}<br>
+                {% for error in form.password.errors %}
+                <div class="w3-panel w3-display-container w3-red">
+                    <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
+                    <p>{{ error }}</p>
+                </div>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </section>
+    <div class="w3-container w3-col l4 w3-hide-small w3-hide-medium">
+        <span></span>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w3-row">
+    <div class="w3-col m6 w3-center">
+       <div class="w3-card w3-margin-top w3-row">
+
+          <table class="w3-table-all w3-hoverable w3-padding-small" style="table-layout: fixed;width: 100%;">
+          <thead><tr class="w3-light-grey"><th>Tag</th><th>value</th><th>Tag</th><th>value</th></tr></thead>
+          <tr>
+          {% for tag in tags %}
+              <td style="word-wrap: break-word;">{{tag.name}}</td><td>{{tag.value}}</td>
+              {% if loop.index % 2 != 1 %} <tr></tr> {% endif %}
+          {% endfor %}
+          </tr>
+          </table>
+        </div>
+
+        <div class="w3-panel w3-row">
+            <div class="w3-container w3-col l2"></div>
+            <figure class="w3-container w3-col l8" style="margin:0px">
+                <img src="{{url_for('img')}}" alt="img segment" style="width:100%">
+            </figure>
+            <div class="w3-container w3-col l2"></div>
+        </div>
+
+    </div>
+    <div class="w3-container w3-col m6" style="height:100%;overflow-y:auto">
+        <form class="w3-margin-top" action="" method="post" novalidate>
+            {{ quest_form.hidden_tag() }}
+
+            <div class = "w3-card">
+                <div class="w3-bar w3-teal">
+                    <span class="w3-large w3-padding-small">{{ quest_form.questionMD }}</span>
+                </diV>
+                <table class="w3-ul">
+                    <tr>
+                    {% for subfield in quest_form.question_mod %}
+                    <td>{{ subfield }} {{ subfield.label }}</td>
+                    {% if loop.index % 2 != 1 %} <tr></tr> {% endif %}
+                    {% endfor %}
+                    </tr>
+                    <tr><td>{{ quest_form.other }}</td></tr>
+                </table>
+            </div>
+            <div class = "w3-card w3-margin-top">
+                <div class="w3-bar w3-teal">
+                    <span class="w3-large w3-padding-small">{{ quest_form.observation_text }}</span>
+                </diV>
+                <ul class="w3-ul">
+                    <li>{{ quest_form.contrast }} {{ quest_form.contrast.label }}</li>
+                </ul>
+            </div>
+
+            <div class = "w3-card w3-margin-top">
+                <div class="w3-teal">
+                    <span class="w3-large w3-padding-small tooltip">{{ quest_form.noise_text }}<i class='fas fa-question-circle '></i>
+                        <img class="tooltiptext" src="{{url_for('static', filename='img/noise.png')}}" alt="">
+                    </span>
+
+                </diV>
+                <div class="w3-container">
+                   <p> {{ quest_form.coverage }} {{ quest_form.coverage.label }}</p>
+                   <p> {{ quest_form.ringing }} {{ quest_form.ringing.label }}</p>
+                   <p> {{ quest_form.ghosting }} {{ quest_form.ghosting.label }}</p>
+                   <p> {{ quest_form.radio }} {{ quest_form.radio.label }}</p>
+                </div>
+
+            </div>
+
+            <div class="w3-right-align w3-margin-top">{{quest_form.submit()}}</div>
+        </form>
+    </div>
+</div>
+<div>
+</diV>
+{% endblock %}

@@ -1,0 +1,32 @@
+{
+    "name": "QC",
+    "questions":[
+        {
+            "key": "noiseType",
+            "text": "What noise type can be observed in this image:",
+            "multiple": true,
+            "answers": [
+                {"key":"blur", "text":"bluring"},
+                {"key":"gost", "text":"gosthering"},
+                {"key":"screen", "text":"screening"},
+                {"key":"repeat", "text":"repeating"},
+                {"key":"none", "text":"none"},
+                {"key":"unknown","text":"Can't appreciate"}
+            ]
+        },
+        {
+            "key": "somethingElse",
+            "text": "say hello my friend and enter",
+            "multiple": false,
+            "answers": [
+                {"key":"hy", "text":"hy"},
+                {"key":"hello", "text":"hello"},
+                {"key":"goodbye", "text":"goodbye"},
+                {"key":"never", "text":"never!!!!"},
+                {"key":"repeat", "text":"say hello my friend and enter"},
+                {"key":"nothing","text":"don't say anything"}
+            ]
+        }
+    ]
+
+}
